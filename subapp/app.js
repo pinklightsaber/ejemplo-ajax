@@ -4,9 +4,12 @@ $('#boton').on("click", function() {
   var id = parseInt(Math.random() * 100);
 
   $.ajax({
-    url: url + '/posts/' + id, //request
+    url: url + '/posts/', //request
     method: 'GET'				//request
   }).then(function(data) {
-      $('#tabla').append('<tr> <td>' + data.id + '</td><td>' + data.title + '</td><td>' + data.body + '</td></tr>')
+  		data.map(function(row){
+  			$('body').append('<h1>' + row.title + '</h1>');
+  		})
+      
     });
 });
